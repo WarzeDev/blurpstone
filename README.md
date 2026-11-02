@@ -5,7 +5,7 @@
 <h1 align="center">Blurpstone</h1>
 
 <p align="center">
-  A Minecraft <strong>Fabric</strong> server mod that bridges in‑game chat with a Discord channel — using a built‑in bot for reading and webhooks for posting, so every Minecraft message appears with the player's name and head as the avatar.
+  A Minecraft <strong>Fabric</strong> server mod that bridges in‑game chat with a Discord channel using a built‑in bot for reading and webhooks for posting, so every Minecraft message appears with the player's name and head as the avatar.
 </p>
 
 <p align="center">
@@ -20,7 +20,7 @@
 
 ## What it does
 
-Blurpstone runs a Discord bot **inside** your Minecraft server process — no sidecar, no external service, no extra dependencies to install on the host. It connects in both directions:
+Blurpstone runs a Discord bot **inside** your Minecraft server process. It connects in both directions:
 
 - **Minecraft → Discord**: every player chat message is posted to your configured channel through a Discord **webhook**, so the message appears with the player's username and their skin head as the avatar.
 - **Discord → Minecraft**: messages sent by real users in the bridged channel are broadcast to everyone online, prefixed with `[Discord]` and the Discord username.
@@ -43,7 +43,7 @@ The mod is **server‑side only** — clients can connect with a vanilla client.
 1. Install **Fabric Loader** (≥ 0.19.5) for Minecraft 26.3 on your server.
 2. Drop **Fabric API** into your server's `mods/` folder.
 3. Download the latest `blurpstone-<version>.jar` from the [**Releases** tab](https://github.com/WarzeDev/blurpstone/releases) and place it in `mods/`.
-4. Start the server once — a default config file is generated at `config/blurpstone.json`.
+4. Start the server once. A default config file is generated at `config/blurpstone.json`.
 5. Fill in your bot token, guild ID, channel ID, and Discord user ID (see [Configuration](#configuration)).
 6. Restart the server. The bot connects, creates the `Blurpstone` webhook in the target channel, and the bridge is live.
 
