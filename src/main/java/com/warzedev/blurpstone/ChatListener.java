@@ -2,7 +2,7 @@ package com.warzedev.blurpstone.listener;
 
 import com.warzedev.blurpstone.discord.WebhookManager;
 import net.fabricmc.fabric.api.message.v1.ServerMessageEvents;
-import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.level.ServerPlayer;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -19,13 +19,10 @@ public class ChatListener {
 
     public void register() {
         ServerMessageEvents.CHAT_MESSAGE.register((message, sender, params) -> {
-            if (sender instanceof ServerPlayerEntity player) {
+            if (sender instanceof ServerPlayer player) {
                 String name = player.getName().getString();
-                String content = message.getContent().getString();
+                String content = message.signedContent(); // correct method
 
-                // Build avatar URL using the player's name on your own skin service.
-                // URLEncoder is used for safety in case of edge cases (e.g. future
-                // Bedrock/Geyser prefixed names such as ".PlayerName").
                 String encodedName = URLEncoder.encode(name, StandardCharsets.UTF_8);
                 String avatarUrl = SKIN_SERVICE_BASE
                         + "?name=" + encodedName

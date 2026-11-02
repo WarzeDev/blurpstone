@@ -3,17 +3,17 @@ package com.warzedev.blurpstone.discord;
 import club.minnced.discord.webhook.WebhookClient;
 import club.minnced.discord.webhook.WebhookClientBuilder;
 import club.minnced.discord.webhook.send.WebhookMessageBuilder;
-import com.warzedev.blurpstone.config.BlurPStoneConfig;
+import com.warzedev.blurpstone.config.BlurpstoneConfig;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.Webhook;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 
 public class WebhookManager {
-    private final BlurPStoneConfig config;
+    private final BlurpstoneConfig config;
     private final JDA jda;
     private WebhookClient webhookClient;
 
-    public WebhookManager(BlurPStoneConfig config, JDA jda) {
+    public WebhookManager(BlurpstoneConfig config, JDA jda) {
         this.config = config;
         this.jda = jda;
     }
@@ -21,19 +21,19 @@ public class WebhookManager {
     public void init() {
         TextChannel channel = jda.getTextChannelById(config.channelId);
         if (channel == null) {
-            System.err.println("[BlurpStone] Cannot create webhook - channel not found.");
+            System.err.println("[Blurpstone] Cannot create webhook - channel not found.");
             return;
         }
 
-        // Look for an existing webhook named "BlurpStone" or create a new one
+        // Look for an existing webhook named "Blurpstone" or create a new one
         Webhook webhook = channel.retrieveWebhooks().complete().stream()
-                .filter(w -> w.getName().equals("BlurpStone"))
+                .filter(w -> w.getName().equals("Blurpstone"))
                 .findFirst()
-                .orElseGet(() -> channel.createWebhook("BlurpStone").complete());
+                .orElseGet(() -> channel.createWebhook("Blurpstone").complete());
 
         String webhookUrl = webhook.getUrl();
         webhookClient = new WebhookClientBuilder(webhookUrl).build();
-        System.out.println("[BlurpStone] Webhook ready: " + webhookUrl);
+        System.out.println("[Blurpstone] Webhook ready: " + webhookUrl);
     }
 
     /**

@@ -1,6 +1,6 @@
 package com.warzedev.blurpstone;
 
-import com.warzedev.blurpstone.config.BlurPStoneConfig;
+import com.warzedev.blurpstone.config.BlurpstoneConfig;
 import com.warzedev.blurpstone.discord.DiscordBot;
 import com.warzedev.blurpstone.discord.WebhookManager;
 import com.warzedev.blurpstone.listener.ChatListener;
@@ -8,16 +8,16 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.minecraft.server.MinecraftServer;
 
-public class BlurpStoneMod implements ModInitializer {
+public class BlurpstoneMod implements ModInitializer {
     private DiscordBot discordBot;
     private WebhookManager webhookManager;
 
     @Override
     public void onInitialize() {
-        System.out.println("[BlurpStone] Initializing…");
+        System.out.println("[Blurpstone] Initializing…");
 
         // Load config once (server‑side only)
-        BlurPStoneConfig config = BlurPStoneConfig.load();
+        BlurpstoneConfig config = BlurpstoneConfig.load();
 
         // Register server started event to start the bot
         ServerLifecycleEvents.SERVER_STARTED.register(server -> {

@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-public class BlurpStoneConfig {
+public class BlurpstoneConfig {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private static final Path CONFIG_PATH = FabricLoader.getInstance()
             .getConfigDir().resolve("blurpstone.json");
@@ -18,15 +18,15 @@ public class BlurpStoneConfig {
     public String channelId = "YOUR_CHANNEL_ID";
     public String discordOwnerUserId = "YOUR_DISCORD_USER_ID";
 
-    public static BlurpStoneConfig load() {
+    public static BlurpstoneConfig load() {
         if (!Files.exists(CONFIG_PATH)) {
-            BlurpStoneConfig defaultConfig = new BlurpStoneConfig();
+            BlurpstoneConfig defaultConfig = new BlurpstoneConfig();
             defaultConfig.save();
             return defaultConfig;
         }
         try {
             String json = Files.readString(CONFIG_PATH);
-            return GSON.fromJson(json, BlurpStoneConfig.class);
+            return GSON.fromJson(json, BlurpstoneConfig.class);
         } catch (IOException e) {
             throw new RuntimeException("Failed to load blurpstone.json", e);
         }
