@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo.png" alt="Blurpstone logo" width="160">
+  <img src="assets/logo.png" alt="Blurpstone logo" width="160">
 </p>
 
 <h1 align="center">Blurpstone</h1>
@@ -16,7 +16,7 @@
 
 ---
 
-![Blurpstone thumbnail](thumbnail.png)
+![Blurpstone thumbnail](assets/thumbnail.png)
 
 ## What it does
 
