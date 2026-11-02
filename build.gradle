@@ -1,0 +1,43 @@
+plugins {
+    id 'net.fabricmc.fabric-loom' version "${loom_version}"
+    id 'maven-publish'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base { archivesName = project.archives_base_name }
+
+repositories {
+    mavenCentral()
+    maven { url 'https://maven.dv8tion.net/releases' }   // JDA
+    maven { url 'https://maven.lavalink.dev/releases' }  // discord‑webhooks
+}
+
+dependencies {
+    // Fabric
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+    // Discord
+    implementation 'net.dv8tion:JDA:5.0.0-beta.24'      // JDA 5 (Java 25 compatible)
+    implementation 'club.minnced:discord-webhooks:0.8.2' // Webhook client
+
+    // Gson is provided by Minecraft, but we add it explicitly for clarity
+    implementation 'com.google.code.gson:gson:2.10.1'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(project.java_version as int)
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = project.java_version as int
+}
+
+jar {
+    from("LICENSE")
+}

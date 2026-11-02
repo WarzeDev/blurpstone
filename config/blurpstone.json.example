@@ -1,0 +1,6 @@
+{
+  "botToken": "YOUR_BOT_TOKEN",
+  "guildId": "YOUR_SERVER_ID",
+  "channelId": "YOUR_CHANNEL_ID",
+  "discordOwnerUserId": "YOUR_DISCORD_USER_ID"
+}

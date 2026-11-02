@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "blurpstone",
+  "version": "${version}",
+  "name": "BlurpStone",
+  "description": "Bridges Minecraft chat with Discord using a built-in bot and webhooks.",
+  "authors": ["WarzeDev"],
+  "contact": {
+    "homepage": "https://blurpstone.warze.org",
+    "sources": "https://blurpstone.warze.org"
+  },
+  "license": "MIT",
+  "environment": "server",
+  "entrypoints": {
+    "main": ["com.warzedev.blurpstone.BlurpStoneMod"]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.0",
+    "fabric-api": ">=0.162.0+26.3",
+    "minecraft": "~26.3",
+    "java": ">=25"
+  }
+}
