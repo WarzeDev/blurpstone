@@ -22,8 +22,8 @@
 
 Blurpstone runs a Discord bot **inside** your Minecraft server process. It connects in both directions:
 
-- **Minecraft → Discord**: every player chat message is posted to your configured channel through a Discord **webhook**, so the message appears with the player's username and their skin head as the avatar.
-- **Discord → Minecraft**: messages sent by real users in the bridged channel are broadcast to everyone online, prefixed with `[Discord]` and the Discord username.
+- **Minecraft → Discord**: every player chat message is posted to your configured channel through a Discord **webhook**, so the message appears with the player's username and their skin head as the avatar. Mentions such as `@everyone`, `@here`, and role/user/channel pings are neutralized before sending, since webhooks bypass Discord's mention permissions.
+- **Discord → Minecraft**: messages sent by real users in the bridged channel are broadcast to everyone online, prefixed with `[Discord]` and the Discord username. The author's name is colored using their highest‑positioned colored Discord role.
 
 The bot creates and manages its own webhook the first time it connects, so you don't need to generate one manually.
 
@@ -64,6 +64,8 @@ The config file lives at `config/blurpstone.json` inside your server directory a
   "botToken": "YOUR_BOT_TOKEN",
   "guildId": "YOUR_SERVER_ID",
   "channelId": "YOUR_CHANNEL_ID",
-  "discordOwnerUserId": "YOUR_DISCORD_USER_ID"
+  "discordOwnerUserId": "YOUR_DISCORD_USER_ID",
+  "bracketsColor": "#5865F2",
+  "discordTextColor": "#FFFFFF",
+  "contentColor": "#FFFFFF"
 }
-```
