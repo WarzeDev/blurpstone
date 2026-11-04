@@ -18,6 +18,11 @@ public class BlurpstoneConfig {
     public String channelId = "YOUR_CHANNEL_ID";
     public String discordOwnerUserId = "YOUR_DISCORD_USER_ID";
 
+    // Colors used for Discord -> Minecraft messages (hex, e.g. "#5865F2")
+    public String bracketsColor = "#5865F2";     // the [ and ] characters
+    public String discordTextColor = "#FFFFFF";  // the word "Discord"
+    public String contentColor = "#FFFFFF";      // author name (fallback) + message body
+
     public static BlurpstoneConfig load() {
         if (!Files.exists(CONFIG_PATH)) {
             BlurpstoneConfig defaultConfig = new BlurpstoneConfig();

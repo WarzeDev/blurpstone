@@ -704,7 +704,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
           </div>
           <h3>Minecraft → Discord</h3>
-          <p>Every player chat message is posted to your channel through a Discord webhook - with the player's username and their skin head as the avatar.</p>
+          <p>Every player chat message is posted to your channel through a Discord webhook - with the player's username and their skin head as the avatar. <code>@everyone</code>, <code>@here</code>, and other pings are stripped before sending.</p>
         </div>
 
         <div class="feature reveal">
@@ -712,7 +712,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
           </div>
           <h3>Discord → Minecraft</h3>
-          <p>Messages from real users in the bridged channel are broadcast to everyone online, prefixed with <code>[Discord]</code> and the Discord username.</p>
+          <p>Messages from real users in the bridged channel are broadcast to everyone online, prefixed with <code>[Discord]</code>. The author's name is colored using their highest-positioned colored role.</p>
         </div>
 
         <div class="feature reveal">
@@ -873,7 +873,10 @@
   <span class="tok-key">"botToken"</span><span class="tok-punc">:</span> <span class="tok-str">"YOUR_BOT_TOKEN"</span><span class="tok-punc">,</span>
   <span class="tok-key">"guildId"</span><span class="tok-punc">:</span> <span class="tok-str">"YOUR_SERVER_ID"</span><span class="tok-punc">,</span>
   <span class="tok-key">"channelId"</span><span class="tok-punc">:</span> <span class="tok-str">"YOUR_CHANNEL_ID"</span><span class="tok-punc">,</span>
-  <span class="tok-key">"discordOwnerUserId"</span><span class="tok-punc">:</span> <span class="tok-str">"YOUR_DISCORD_USER_ID"</span>
+  <span class="tok-key">"discordOwnerUserId"</span><span class="tok-punc">:</span> <span class="tok-str">"YOUR_DISCORD_USER_ID"</span><span class="tok-punc">,</span>
+  <span class="tok-key">"bracketsColor"</span><span class="tok-punc">:</span> <span class="tok-str">"#5865F2"</span><span class="tok-punc">,</span>
+  <span class="tok-key">"discordTextColor"</span><span class="tok-punc">:</span> <span class="tok-str">"#FFFFFF"</span><span class="tok-punc">,</span>
+  <span class="tok-key">"contentColor"</span><span class="tok-punc">:</span> <span class="tok-str">"#FFFFFF"</span>
 <span class="tok-punc">}</span></pre>
       </div>
 

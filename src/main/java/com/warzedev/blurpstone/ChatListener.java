@@ -21,7 +21,7 @@ public class ChatListener {
         ServerMessageEvents.CHAT_MESSAGE.register((message, sender, params) -> {
             if (sender instanceof ServerPlayer player) {
                 String name = player.getName().getString();
-                String content = message.signedContent(); // correct method
+                String content = sanitizeMentions(message.signedContent());
 
                 String encodedName = URLEncoder.encode(name, StandardCharsets.UTF_8);
                 String avatarUrl = SKIN_SERVICE_BASE
@@ -31,5 +31,22 @@ public class ChatListener {
                 webhookManager.sendMinecraftMessage(name, content, avatarUrl);
             }
         });
+    }
+
+    /**
+     * Webhooks bypass the "Mention Everyone" permission, so any ping in the
+     * Minecraft chat would be relayed verbatim. We neutralize @everyone/@here
+     * with a zero-width space (keeps the text readable) and strip Discord's
+     * user/role/channel mention syntax entirely.
+     */
+    private static String sanitizeMentions(String content) {
+        // Neutralize broadcast pings
+        content = content.replace("@everyone", "@\u200Beveryone");
+        content = content.replace("@here", "@\u200Bhere");
+        // Strip <@id>, <@!id>, <@&id>, <#id>
+        content = content.replaceAll("<@!?\\d+>", "");
+        content = content.replaceAll("<@&\\d+>", "");
+        content = content.replaceAll("<#\\d+>", "");
+        return content;
     }
 }
